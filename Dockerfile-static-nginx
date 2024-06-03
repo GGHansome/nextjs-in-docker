@@ -1,0 +1,12 @@
+# 安装 Nginx
+FROM nginx:alpine AS runner
+
+# 复制构建的文件到 Nginx 的 html 目录
+COPY .next/static /usr/share/nginx/html/_next/static
+COPY nginx-static.conf /etc/nginx/nginx.conf
+
+# 暴露端口
+EXPOSE 80
+
+# 启动 Nginx
+CMD ["nginx", "-g", "daemon off;"]

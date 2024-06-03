@@ -1,0 +1,17 @@
+# 安装 Nginx
+FROM node:current-alpine as runner
+
+WORKDIR /app
+
+# 设置生产环境
+ENV NODE_ENV production
+
+# 复制构建的文件到 Nginx 的 html 目录
+COPY .next/standalone ./
+COPY ./public ./public
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动 Nginx
+CMD ["node", "server.js"]

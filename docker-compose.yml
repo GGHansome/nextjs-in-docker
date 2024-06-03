@@ -1,0 +1,16 @@
+version: '1'
+services:
+  nextjs:
+    image: nextjs-standalone-dy:v1.1
+    container_name: nextjs-standalone-dy
+    ports:
+      - "3000:3000"
+    depends_on:
+      - nginx
+
+  nginx:
+    image: nextjs-static-nginx:v1.2
+    container_name: nextjs-static-nginx
+    ports:
+      - "80:80"
+    
